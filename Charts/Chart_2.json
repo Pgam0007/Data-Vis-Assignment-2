@@ -1,0 +1,54 @@
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+   "title": "Top 10 Individual Innings",
+    "data": {
+      "values": [
+        {"Batsmen": "Rilee Rossouw (SA)", "Runs": 109, "fill": "#FF3333"}, {"Batsmen": "Glenn Phillips (NZ)", "Runs": 104}, {"Batsmen": "Devon Conway (NZ)", "Runs": 92},
+        {"Batsmen": "Alex Hales (ENG)", "Runs": 86}, {"Batsmen": "Virat Kohli (IND)", "Runs": 82}, {"Batsmen": "Jos Buttler (ENG)", "Runs": 73},
+        {"Batsmen": "Najmul Hossain (BAN)", "Runs": 71}, {"Batsmen": "Lorcan Tucker (IRE)", "Runs": 71}, {"Batsmen": "Kusal Mendis (SL)", "Runs": 68},
+        {"Batsmen": "Suryakumar Yadav (IND)", "Runs": 68}
+      ]
+    },
+    "params": [
+      {
+        "name": "highlight",
+        "select": {"type": "point", "on": "pointerover"}
+      },
+      {"name": "select", "select": "point"}
+    ],
+    "mark": {
+      "type": "bar",
+      "fill": "#505679",
+      "stroke": "black",
+      "cursor": "pointer"
+    },
+    "encoding": {
+      "x": {"field": "Batsmen", "type": "ordinal"},
+      "y": {"field": "Runs", "type": "quantitative"},
+      "fillOpacity": {
+        "condition": {"param": "select", "value": 1},
+        "value": 0.3
+      },
+      "strokeWidth": {
+        "condition": [
+          {
+            "param": "select",
+            "empty": false,
+            "value": 2
+          },
+          {
+            "param": "highlight",
+            "empty": false,
+            "value": 1
+          }
+        ],
+        "value": 0
+      }
+    },
+    "config": {
+      "scale": {
+        "bandPaddingInner": 0.2
+      }
+    }
+  }

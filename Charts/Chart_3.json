@@ -1,0 +1,52 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Winning Method of Top 5 Teams",
+    "data": {
+      "values": [
+        {"Team": "England", "Wins": 4},
+        {"Team": "England", "Wins": -1},
+        {"Team": "India", "Wins": 1},
+        {"Team": "India", "Wins": -3},
+        {"Team": "Pakistan", "Wins": 3},
+        {"Team": "Pakistan", "Wins": -1},
+        {"Team": "Australia", "Wins": 1},
+        {"Team": "Australia", "Wins": -2},
+        {"Team": "New Zealand", "Wins": 3}
+      ]
+    },
+    "encoding": {
+      "y": {
+        "field": "Team",
+        "type": "nominal",
+        "axis": {
+          "domain": false,
+          "ticks": false,
+          "labelAngle": 0,
+          "labelPadding": 4
+        }
+      },
+      "x": {
+        "field": "Wins",
+        "type": "quantitative",
+        "scale": {"padding": 20},
+        "axis": {
+          "gridColor": {
+            "condition": {"test": "datum.value === 0", "value": "black"},
+            "value": "#ddd"
+          }
+        }
+      }
+    },
+    "layer": [
+      {"mark": "bar",
+      "fill": "#49adb6"},
+      {
+        "mark": {
+          "type": "text",
+          "align": {"expr": "datum.Wins < 0 ? 'right' : 'left'"},
+          "dx": {"expr": "datum.Wins < 0 ? -2 : 2"}
+        },
+        "encoding": {"text": {"field": "Wins", "type": "quantitative"}}
+      }
+    ]
+  }

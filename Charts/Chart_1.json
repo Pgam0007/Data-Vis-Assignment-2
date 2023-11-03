@@ -1,0 +1,55 @@
+
+  {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+   "title": "Matches Won by Each Team",
+    "data": {
+      "values": [
+        {"Team": "Australia", "Matches Won": 3}, {"Team": "Bangladesh", "Matches Won": 2}, {"Team": "England", "Matches Won": 5},
+        {"Team": "India", "Matches Won": 4}, {"Team": "Ireland", "Matches Won": 1}, {"Team": "Nederlands", "Matches Won": 2},
+        {"Team": "New Zealand", "Matches Won": 3}, {"Team": "Pakistan", "Matches Won": 4}, {"Team": "South Africa", "Matches Won": 2},
+        {"Team": "Sri Lanka", "Matches Won": 2}, {"Team": "Zimbarbwe", "Matches Won": 1}
+      ]
+    },
+    "params": [
+      {
+        "name": "highlight",
+        "select": {"type": "point", "on": "pointerover"}
+      },
+      {"name": "select", "select": "point"}
+    ],
+    "mark": {
+      "type": "bar",
+      "fill": "#4C78A8",
+      "stroke": "black",
+      "cursor": "pointer"
+    },
+    "encoding": {
+      "x": {"field": "Team", "type": "ordinal"},
+      "y": {"field": "Matches Won", "type": "quantitative"},
+      "fillOpacity": {
+        "condition": {"param": "select", "value": 1},
+        "value": 0.3
+      },
+      "strokeWidth": {
+        "condition": [
+          {
+            "param": "select",
+            "empty": false,
+            "value": 2
+          },
+          {
+            "param": "highlight",
+            "empty": false,
+            "value": 1
+          }
+        ],
+        "value": 0
+      }
+    },
+    "config": {
+      "scale": {
+        "bandPaddingInner": 0.2
+      }
+    }
+  }
+  
