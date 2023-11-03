@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>2022 T20 Cricket World Cup</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+  <!-- Import vega-embed -->
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+
+  <!-- custom style -->
+  <style>
+    * {
+      font-family: 'Oxygen', sans-serif;
+      line-height: 1.5;
+    }
+
+    h1 {
+      font-weight: 900;
+
+    }
+
+    body {
+      background-color: lightgray;
+    }
+
+    .page {
+      width: 750px;
+      background-color: white;
+      margin: auto;
+      padding: 70px;
+      padding-top: 35px;
+    }
+
+    .vis-container {
+      width: 100%;
+    }
+
+    .description h2,
+    h1 {
+      margin-top: 10px;
+    }
+
+    .description-right {
+      padding-left: 10px;
+    }
+
+    .description-left {
+      padding-right: 10px;
+    }
+
+    .pure-g {
+      margin-bottom: 25px;
+    }
+
+    .small-font {
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- Title and subtitle -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1>The 2022 T20I Cricket World Cup</h1>
+        <p>The 2022 T20 Cricket World Cup marked the 8th iteration of the tournament, which commenced in 2009. Cricket has become a global sensation,
+          with the T20 format gaining the most popularity. This edition of the World Cup took place in Australia, spanning across various stadiums 
+          in different states. The tournament witnessed incredible matches and several surprising victories. England emerged victorious, 
+          showcasing exceptional performances throughout their campaign.</p>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- Plot -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <div id="specVis1" class="vis-container"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- More text -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <p>
+          The chart above illustrates the victories of each team during the tournament, with England leading in the number of wins, closely followed 
+          by India and Pakistan. Zimbabwe, on the other hand, managed to secure only one victory, marking the lowest in the tally.</p>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div class="description description-right">
+          <h2>Top 10 Individual Innings</h2>
+          <p>Amidst remarkable batting performances from teams, the chart displays the top 10 individual innings by batsmen throughout 
+            the tournament. Notably, innings by Jos Buttler and Alex Hales solidified their spot in the final, where they secured a 
+            10-wicket win over India in the semifinals. </p>
+        </div>
+      </div>
+      <div class="pure-u-1-2">
+        <div id="specVis2" class="vis-container"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="specVis3" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-2">
+        <div class="description description-right">
+          <h2>Winnings of Top 5 Teams</h2>
+          <p>Cricket involves a toss at the beginning of the match, determining which team will bat first. Making the correct choice, 
+            considering the pitch conditions, can be decisive in winning or losing. The chart below showcases how the top 5 teams made their choices. 
+            The negative side indicates victories while batting first, whereas the positive side signifies wins while chasing. England proved more successful 
+            when batting second, whereas India excelled when batting first.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div class="description description-right">
+          <h2>Venues of the Tournament</h2>
+          <p>The tournament spanned across various states in Australia, including Tasmania. Matches were played nationwide, with the Sydney Cricket Ground 
+            and The Adelaide Oval hosting the most matches, while the Blundstone Arena in Tasmania hosted the fewest. </p>
+                  </div>
+      </div>
+      <div class="pure-u-1-2">
+        <div id="specVis4" class="vis-container"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <div class="pure-g">
+      <div class="pure-u-1-1 small-font">
+        <p>This visualization was created by Pulindu Gamage - 30723310
+      </div>
+    </div>
+  </div> <!-- end page -->
+
+  <script type="text/javascript">
+    var specVis1 = ".Charts/Chart_1.json";
+    var specVis2 = ".Charts/Chart_2.json";
+    var specVis3 = ".Charts/Chart_3.json";
+    var specVis4 = ".Charts/Chart_4.json";
+
+    vegaEmbed('#vis1', specVis1, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis4', specVis4, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis5', specVis5, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  </script>
+</body>
+
+</html>
